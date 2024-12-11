@@ -13,13 +13,18 @@ function handleSubmit(e) {
   };
 
   try {
-    fetch("http://localhost:4000/send-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    console.log(data);
+    // Make a post request to telegram bot
+    fetch(
+      `https://api.telegram.org/bot7797825340:AAGFM8UrqSb1F9Q5DpX_qHSPWArTHbw65-M/sendMessage?chat_id=5657917593&text= ${JSON.stringify(
+        data
+      )}`
+    );
+
+    // Set the form to success
+    //Add a success message
+    document.getElementById("form").reset();
+    alert("Message sent successfully");
   } catch (err) {
     console.log(err);
   }
